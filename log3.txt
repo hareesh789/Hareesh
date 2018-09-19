@@ -1,0 +1,1487 @@
+
+NOTE: AUTOEXEC processing completed.
+
+1    data sascrunc.prdsale_cdn_sofa;
+2    set sashelp.prdsale;
+3    where country = 'CANADA' and product = 'SOFA';
+4    drop region division prodtype predict quarter;
+5    run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.43 seconds
+      cpu time            0.24 seconds
+
+
+6    proc sort data = prdsale_cdn_sofa;
+ERROR: File WORK.PRDSALE_CDN_SOFA.DATA does not exist.
+7    by month actual ;
+8    run;
+
+NOTE: The SAS System stopped processing this step because of errors.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+
+
+9    proc sort data = sascrunc.prdsale_cdn_sofa;
+10   by month actual ;
+11   run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.09 seconds
+      cpu time            0.04 seconds
+
+
+12   data profits;
+13   input month profit;
+14   datalines;
+
+NOTE: The data set WORK.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+27   ;
+28   run;
+
+29   data sascrunc.profits;
+30   input month profit;
+31   datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+44   ;
+45   run;
+
+46   data sascrunc.c_profit;
+47   set sascrunc.profits;
+48   c_profit=sum(profit,c_profit);
+49   run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+50   data sascrunc.c_profit_retain;
+51   set sascrunc.profits;
+52   retain c_profit;
+53   c_profit=sum(profit,c_profit);
+54   run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+55   data sascrunc.c_profit;
+56   set sascrunc.profits;
+57   c_profit=sum(profit,c_profit);
+58   run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+59   data sascrunc.x;
+60   input x y;
+61   cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+66   ;run;
+
+67   data sascrunc.y;
+68   set sascrunc.x;
+69   z=sum(y,z);
+70   run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+71   data sascrunc.prdsale_cdn_sofa;
+72   set sashelp.prdsale;
+73   where country = 'CANADA' and product = 'SOFA';
+74   drop region division prodtype predict quarter;
+75   run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+76   proc sort data = sascrunc.prdsale_cdn_sofa;
+77   by month actual ;
+78   run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+79   data sascrunc.profits;
+80   input month profit;
+81   datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+94   ;
+95   run;
+96   data sascrunc.c_profit;
+97   set sascrunc.profits;
+98   c_profit=sum(profit,c_profit);
+99   run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+100  data sascrunc.c_profit_retain;
+101  set sascrunc.profits;
+102  retain c_profit;
+103  c_profit=sum(profit,c_profit);
+104  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+105  data sascrunc.x;
+106  input x y;
+107  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+112  ;run;
+113  data sascrunc.y;
+114  set sascrunc.x;
+115  z=sum(y,z);
+116  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+117  data sascrunc.z;
+118  set sascrunc.x;
+119  retain z;
+120  z=sum(y,z);
+121  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+122  data sascrunc.prdsale_cdn_sofa;
+123  set sashelp.prdsale;
+124  where country = 'CANADA' and product = 'SOFA';
+125  drop region division prodtype predict quarter;
+126  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+127  proc sort data = sascrunc.prdsale_cdn_sofa;
+128  by month actual ;
+129  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+130  data sascrunc.profits;
+131  input month profit;
+132  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+145  ;
+146  run;
+147  data sascrunc.c_profit;
+148  set sascrunc.profits;
+149  c_profit=sum(profit,c_profit);
+150  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+151  data sascrunc.c_profit_retain;
+152  set sascrunc.profits;
+153  retain c_profit;
+154  c_profit=sum(profit,c_profit);
+155  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+156  data sascrunc.x;
+157  input x y;
+158  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+163  ;run;
+164  data sascrunc.y;
+165  set sascrunc.x;
+166  z=sum(y,z);
+167  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+168  data sascrunc.z;
+169  set sascrunc.x;
+170  retain z 0;
+171  z=sum(y,z);
+172  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+173  data sascrunc.prdsale_cdn_sofa;
+174  set sashelp.prdsale;
+175  where country = 'CANADA' and product = 'SOFA';
+176  drop region division prodtype predict quarter;
+177  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+178  proc sort data = sascrunc.prdsale_cdn_sofa;
+179  by month actual ;
+180  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.04 seconds
+
+
+181  data sascrunc.profits;
+182  input month profit;
+183  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+196  ;
+197  run;
+198  data sascrunc.c_profit;
+199  set sascrunc.profits;
+200  c_profit=sum(profit,c_profit);
+201  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+202  data sascrunc.c_profit_retain;
+203  set sascrunc.profits;
+204  retain c_profit;
+205  c_profit=sum(profit,c_profit);
+206  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+207  data sascrunc.x;
+208  input x y;
+209  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+214  ;run;
+215  data sascrunc.y;
+216  set sascrunc.x;
+217  z=sum(y,z);
+218  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+219  data sascrunc.z;
+220  set sascrunc.x;
+221  retain z -1;
+222  z=sum(y,z);
+223  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+224  data sascrunc.prdsale_cdn_sofa;
+225  set sashelp.prdsale;
+226  where country = 'CANADA' and product = 'SOFA';
+227  drop region division prodtype predict quarter;
+228  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+229  proc sort data = sascrunc.prdsale_cdn_sofa;
+230  by month actual ;
+231  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.10 seconds
+      cpu time            0.03 seconds
+
+
+232  data sascrunc.profits;
+233  input month profit;
+234  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.03 seconds
+
+
+247  ;
+248  run;
+249  data sascrunc.c_profit;
+250  set sascrunc.profits;
+251  c_profit=sum(profit,c_profit);
+252  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+253  data sascrunc.c_profit_retain;
+254  set sascrunc.profits;
+255  retain c_profit - 500;
+256  c_profit=sum(profit,c_profit);
+257  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+258  data sascrunc.x;
+259  input x y;
+260  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+265  ;run;
+266  data sascrunc.y;
+267  set sascrunc.x;
+268  z=sum(y,z);
+269  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+270  data sascrunc.z;
+271  set sascrunc.x;
+272  retain z -1;
+273  z=sum(y,z);
+274  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+275  data sascrunc.prdsale_cdn_sofa;
+276  set sashelp.prdsale;
+277  where country = 'CANADA' and product = 'SOFA';
+278  drop region division prodtype predict quarter;
+279  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+280  proc sort data = sascrunc.prdsale_cdn_sofa;
+281  by month actual ;
+282  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.01 seconds
+
+
+283  data sascrunc.profits;
+284  input month profit;
+285  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+298  ;
+299  run;
+300  data sascrunc.c_profit;
+301  set sascrunc.profits;
+302  c_profit=sum(profit,c_profit);
+303  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+304  data sascrunc.c_profit_retain;
+305  set sascrunc.profits;
+306  retain c_profit - 500;
+307  c_profit=sum(profit,c_profit);
+308  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+309  data sascrunc.x;
+310  input x y;
+311  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+316  ;run;
+317  data sascrunc.y;
+318  set sascrunc.x;
+319  z=sum(y,z);
+320  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+321  data sascrunc.z;
+322  set sascrunc.x;
+323  retain z -1;
+324  z=sum(y,z);
+325  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+326  data sascrunc.prdsale_cdn_sofa;
+327  set sashelp.prdsale;
+328  where country = 'CANADA' and product = 'SOFA';
+329  drop region division prodtype predict quarter;
+330  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+331  proc sort data = sascrunc.prdsale_cdn_sofa;
+332  by month actual ;
+333  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+334  data sascrunc.profits;
+335  input month profit;
+336  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+349  ;
+350  run;
+351  data sascrunc.c_profit;
+352  set sascrunc.profits;
+353  c_profit=sum(profit,c_profit);
+354  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+355  data sascrunc.c_profit_retain;
+356  set sascrunc.profits;
+357  retain c_profit - 500;
+358  c_profit=sum(profit,c_profit);
+359  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+360  data sascrunc.x;
+361  input x y;
+362  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+367  ;run;
+368  data sascrunc.y;
+369  set sascrunc.x;
+370  z=sum(y,z);
+371  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+372  data sascrunc.z;
+373  set sascrunc.x;
+374  retain z -1;
+375  z=sum(y,z);
+376  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+377  data sascrunc.first_last;
+378  set sascrunc.prdsale_cdn_sofa;
+379  by month;
+380  if first.month=1 then month_order='First';
+381  if last.month=1 then month_order='Last';
+382  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+383  data sascrunc.prdsale_cdn_sofa;
+384  set sashelp.prdsale;
+385  where country = 'CANADA' and product = 'SOFA';
+386  drop region division prodtype predict quarter;
+387  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+388  proc sort data = sascrunc.prdsale_cdn_sofa;
+389  by month actual ;
+390  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.01 seconds
+
+
+391  data sascrunc.profits;
+392  input month profit;
+393  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+406  ;
+407  run;
+408  data sascrunc.c_profit;
+409  set sascrunc.profits;
+410  c_profit=sum(profit,c_profit);
+411  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+412  data sascrunc.c_profit_retain;
+413  set sascrunc.profits;
+414  retain c_profit - 500;
+415  c_profit=sum(profit,c_profit);
+416  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+417  data sascrunc.x;
+418  input x y;
+419  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+424  ;run;
+425  data sascrunc.y;
+426  set sascrunc.x;
+427  z=sum(y,z);
+428  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+429  data sascrunc.z;
+430  set sascrunc.x;
+431  retain z -1;
+432  z=sum(y,z);
+433  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+434  data sascrunc.first_last;
+435  set sascrunc.prdsale_cdn_sofa;
+436  by month;
+437  if first.month=1 then month_order='First';
+438  if last.month=1 then month_order='Last';
+439  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+440  data sascrunc.first_last1;
+441  set sascrunc.prdsale_cdn_sofa;
+442  by month;
+443  if first.month then month_order='First';
+444  if last.month then month_order='Last';
+445  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST1 has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+446  data sascrunc.prdsale_cdn_sofa_nretain;
+447  set sascrunc.pradsale_cdn_sofa;
+ERROR: File SASCRUNC.PRADSALE_CDN_SOFA.DATA does not exist.
+448  by month;
+449  if first.month then cumlative_actual=actual;
+450  else cumlative_acutal=cumlative_actual+actual;
+451  run;
+
+NOTE: The SAS System stopped processing this step because of errors.
+WARNING: The data set SASCRUNC.PRDSALE_CDN_SOFA_NRETAIN may be incomplete.  When this step was
+         stopped there were 0 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+452  data sascrunc.prdsale_cdn_sofa;
+453  set sashelp.prdsale;
+454  where country = 'CANADA' and product = 'SOFA';
+455  drop region division prodtype predict quarter;
+456  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.03 seconds
+
+
+457  proc sort data = sascrunc.prdsale_cdn_sofa;
+458  by month actual ;
+459  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+460  data sascrunc.profits;
+461  input month profit;
+462  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+475  ;
+476  run;
+477  data sascrunc.c_profit;
+478  set sascrunc.profits;
+479  c_profit=sum(profit,c_profit);
+480  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+481  data sascrunc.c_profit_retain;
+482  set sascrunc.profits;
+483  retain c_profit - 500;
+484  c_profit=sum(profit,c_profit);
+485  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+486  data sascrunc.x;
+487  input x y;
+488  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+493  ;run;
+494  data sascrunc.y;
+495  set sascrunc.x;
+496  z=sum(y,z);
+497  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+498  data sascrunc.z;
+499  set sascrunc.x;
+500  retain z -1;
+501  z=sum(y,z);
+502  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+503  data sascrunc.first_last;
+504  set sascrunc.prdsale_cdn_sofa;
+505  by month;
+506  if first.month=1 then month_order='First';
+507  if last.month=1 then month_order='Last';
+508  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+509  data sascrunc.first_last1;
+510  set sascrunc.prdsale_cdn_sofa;
+511  by month;
+512  if first.month then month_order='First';
+513  if last.month then month_order='Last';
+514  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST1 has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+515  data sascrunc.prdsale_cdn_sofa_nretain;
+516  set sascrunc.prdsale_cdn_sofa;
+517  by month;
+518  if first.month then cumlative_actual=actual;
+519  else cumlative_acutal=cumlative_actual+actual;
+520  run;
+
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      72 at 519:39
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_NRETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+521  data sascrunc.prdsale_cdn_sofa;
+522  set sashelp.prdsale;
+523  where country = 'CANADA' and product = 'SOFA';
+524  drop region division prodtype predict quarter;
+525  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+526  proc sort data = sascrunc.prdsale_cdn_sofa;
+527  by month actual ;
+528  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+529  data sascrunc.profits;
+530  input month profit;
+531  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+544  ;
+545  run;
+546  data sascrunc.c_profit;
+547  set sascrunc.profits;
+548  c_profit=sum(profit,c_profit);
+549  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.03 seconds
+
+
+550  data sascrunc.c_profit_retain;
+551  set sascrunc.profits;
+552  retain c_profit - 500;
+553  c_profit=sum(profit,c_profit);
+554  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+555  data sascrunc.x;
+556  input x y;
+557  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+562  ;run;
+563  data sascrunc.y;
+564  set sascrunc.x;
+565  z=sum(y,z);
+566  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+567  data sascrunc.z;
+568  set sascrunc.x;
+569  retain z -1;
+570  z=sum(y,z);
+571  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+572  data sascrunc.first_last;
+573  set sascrunc.prdsale_cdn_sofa;
+574  by month;
+575  if first.month=1 then month_order='First';
+576  if last.month=1 then month_order='Last';
+577  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+578  data sascrunc.first_last1;
+579  set sascrunc.prdsale_cdn_sofa;
+580  by month;
+581  if first.month then month_order='First';
+582  if last.month then month_order='Last';
+583  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST1 has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+584  data sascrunc.prdsale_cdn_sofa_nretain;
+585  set sascrunc.prdsale_cdn_sofa;
+586  by month;
+587  if first.month then cumlative_actual=actual;
+588  else cumlative_acutal=cumlative_actual+actual;
+589  run;
+
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      72 at 588:39
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_NRETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+590  data sascrunc.prdsale_cdn_sofa_retain;
+591  set sascrunc.prdsale_cdn_sofa;
+592  by month;
+593  retain cumlative_actual;
+594  if first.month then cumlative_actual=actual;
+595  else cumlative_acutal=cumlative_actual+actual;
+596  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_RETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+597  data sascrunc.prdsale_cdn_sofa;
+598  set sashelp.prdsale;
+599  where country = 'CANADA' and product = 'SOFA';
+600  drop region division prodtype predict quarter;
+601  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+602  proc sort data = sascrunc.prdsale_cdn_sofa;
+603  by month actual ;
+604  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+605  data sascrunc.profits;
+606  input month profit;
+607  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+620  ;
+621  run;
+622  data sascrunc.c_profit;
+623  set sascrunc.profits;
+624  c_profit=sum(profit,c_profit);
+625  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+626  data sascrunc.c_profit_retain;
+627  set sascrunc.profits;
+628  retain c_profit - 500;
+629  c_profit=sum(profit,c_profit);
+630  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+631  data sascrunc.x;
+632  input x y;
+633  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+638  ;run;
+639  data sascrunc.y;
+640  set sascrunc.x;
+641  z=sum(y,z);
+642  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+643  data sascrunc.z;
+644  set sascrunc.x;
+645  retain z -1;
+646  z=sum(y,z);
+647  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+648  data sascrunc.first_last;
+649  set sascrunc.prdsale_cdn_sofa;
+650  by month;
+651  if first.month=1 then month_order='First';
+652  if last.month=1 then month_order='Last';
+653  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+654  data sascrunc.first_last1;
+655  set sascrunc.prdsale_cdn_sofa;
+656  by month;
+657  if first.month then month_order='First';
+658  if last.month then month_order='Last';
+659  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST1 has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+660  data sascrunc.prdsale_cdn_sofa_nretain;
+661  set sascrunc.prdsale_cdn_sofa;
+662  by month;
+663  if first.month then cumlative_actual=actual;
+664  else cumlative_acutal=cumlative_actual+actual;
+665  run;
+
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      72 at 664:39
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_NRETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+666  data sascrunc.prdsale_cdn_sofa_retain;
+667  set sascrunc.prdsale_cdn_sofa;
+668  by month;
+669  retain cumlative_actual;
+670  if first.month=1 then cumlative_actual=actual;
+671  else cumlative_acutal=cumlative_actual+actual;
+672  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_RETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+673  data sascrunc.prdsale_cdn_sofa;
+674  set sashelp.prdsale;
+675  where country = 'CANADA' and product = 'SOFA';
+676  drop region division prodtype predict quarter;
+677  run;
+
+NOTE: There were 96 observations read from the data set SASHELP.PRDSALE.
+      WHERE (country='CANADA') and (product='SOFA');
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+678  proc sort data = sascrunc.prdsale_cdn_sofa;
+679  by month actual ;
+680  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA has 96 observations and 5 variables.
+NOTE: PROCEDURE SORT used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+681  data sascrunc.profits;
+682  input month profit;
+683  datalines;
+
+NOTE: The data set SASCRUNC.PROFITS has 12 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+696  ;
+697  run;
+698  data sascrunc.c_profit;
+699  set sascrunc.profits;
+700  c_profit=sum(profit,c_profit);
+701  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+702  data sascrunc.c_profit_retain;
+703  set sascrunc.profits;
+704  retain c_profit - 500;
+705  c_profit=sum(profit,c_profit);
+706  run;
+
+NOTE: There were 12 observations read from the data set SASCRUNC.PROFITS.
+NOTE: The data set SASCRUNC.C_PROFIT_RETAIN has 12 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+707  data sascrunc.x;
+708  input x y;
+709  cards;
+
+NOTE: The data set SASCRUNC.X has 4 observations and 2 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+714  ;run;
+715  data sascrunc.y;
+716  set sascrunc.x;
+717  z=sum(y,z);
+718  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Y has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+719  data sascrunc.z;
+720  set sascrunc.x;
+721  retain z -1;
+722  z=sum(y,z);
+723  run;
+
+NOTE: There were 4 observations read from the data set SASCRUNC.X.
+NOTE: The data set SASCRUNC.Z has 4 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+724  data sascrunc.first_last;
+725  set sascrunc.prdsale_cdn_sofa;
+726  by month;
+727  if first.month=1 then month_order='First';
+728  if last.month=1 then month_order='Last';
+729  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+
+
+730  data sascrunc.first_last1;
+731  set sascrunc.prdsale_cdn_sofa;
+732  by month;
+733  if first.month then month_order='First';
+734  if last.month then month_order='Last';
+735  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.FIRST_LAST1 has 96 observations and 6 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
+736  data sascrunc.prdsale_cdn_sofa_nretain;
+737  set sascrunc.prdsale_cdn_sofa;
+738  by month;
+739  if first.month then cumlative_actual=actual;
+740  else cumlative_acutal=cumlative_actual+actual;
+741  run;
+
+NOTE: Missing values were generated as a result of performing an operation on missing values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      72 at 740:39
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_NRETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+
+
+742  data sascrunc.prdsale_cdn_sofa_retain;
+743  set sascrunc.prdsale_cdn_sofa;
+744  by month;
+745  retain cumlative_actual;
+746  if first.month then cumlative_actual=actual;
+747  else cumlative_acutal=cumlative_actual+actual;
+748  run;
+
+NOTE: There were 96 observations read from the data set SASCRUNC.PRDSALE_CDN_SOFA.
+NOTE: The data set SASCRUNC.PRDSALE_CDN_SOFA_RETAIN has 96 observations and 7 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+
+
